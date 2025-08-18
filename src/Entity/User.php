@@ -157,7 +157,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    #[Groups(['users:index'])]
+    #[Groups(['users:index', 'articles:index'])]
     public function getFullName(): string
     {
         return "$this->firstName $this->lastName";

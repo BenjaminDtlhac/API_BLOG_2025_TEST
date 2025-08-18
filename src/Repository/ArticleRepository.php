@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Dto\Filter\ArticleFilterDto;
 use App\Entity\Article;
+use App\Mapper\ArticleMapper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,6 +18,31 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function countAll(): int
+    {
+        return $this->createQueryBuilder('a')
+            ->select('COUNT(a.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findPaginate(ArticleFilterDto $filter): array
+    {
+        $offset = ($filter->getPage() - 1) * $filter->getLimit();
+        $query = $this->createQueryBuilder('a')
+            ->setMaxResults($filter->getLimit())
+            ->setFirstResult($offset);
+        $total = $this->countAll();
+
+            return [
+                'items' => $query->getQuery()->getResult(),
+                'meta' => [
+                    'page' => ceil($total / $filter->getLimit()),
+                    'total' => $total,
+                ]
+                ];
+            
+    }
 //    /**
 //     * @return Article[] Returns an array of Article objects
 //     */

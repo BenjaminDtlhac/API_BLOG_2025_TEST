@@ -5,7 +5,11 @@ meta {
 }
 
 delete {
-  url: https://localhost:8000/api/admin/users/5
+  url: https://localhost:8000/api/admin/users/6
   body: none
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDc4OTk0ODAsImV4cCI6MTc0NzkwMzA4MCwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluIn0.WJz9GHwm3mU9_SyuWmhJb6_tUkLWMomyWPFVgX96I40whBpJ1jYiul_ev-2lhOx52IaJkdgQM_PPQ_n8b8qXYiE6MBoGQDlCmBZYbYkFHpC-kHLT-4hy0eQVJMpMWfd3NlUyHVaw6jJT6yxS8swPRS8gD_SUAlGNn8a4PoP8Cjs_svLrkrupq3NjNDnYAitQYeLVym2HKS0ozwYR2VUQ1x_9TlYAfgd05j48KPYOp3BPRyNxwEzLhz33S3WJwFjxmOQS9IkKDXO8pdTUnl652Z_pwyvy4vp3lmtJgtnEYcvSDyfjZ3GjflS90GmDaZwQR67nWtgzBYlg60ufomVyow
 }
