@@ -99,6 +99,24 @@ class ArticleEntityTest extends KernelTestCase
         $this->assertEquals($expected, $article->getUpdatedAt()->format('Y-m-d H:i'));
     }
 
+    public function testGenerationUpdateAtOnUpdateAndEnsureUpdatedIsChanged(): void
+    {
+        $article = $this->getArticle();
+
+        $this->persistData($article, $article->getUser());
+
+        $updatedAt = new \DateTimeImmutable('2025-01-01 12:00:00');
+      
+        $article->setUpdatedAt($updatedAt);
+
+        $this->entityManager->flush();
+
+        $this->assertNotEquals($updatedAt, $article->getUpdatedAt());
+    }
+
+
+
+
     public function testExceptionWhenNonUniqueTitle(): void
     {
         $this->databaseTool->loadAliceFixture(
