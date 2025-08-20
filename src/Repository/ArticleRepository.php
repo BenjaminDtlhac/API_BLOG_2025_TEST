@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Dto\Filter\ArticleFilterDto;
 use App\Entity\Article;
-use App\Mapper\ArticleMapper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

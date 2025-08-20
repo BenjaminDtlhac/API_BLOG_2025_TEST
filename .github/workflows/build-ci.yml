@@ -25,9 +25,18 @@ jobs:
           tools: symfony
           ini-values: memory_limit=3G
           coverage: pcov
+        
+      - name: Validate composer
+        run: composer validate
 
       - name: Install composer dependencies
         run: composer install --no-interaction
+
+      - name: Check Security issues
+        run: symfony security:check
+
+      - name: Check ECS review
+        run: vendor/bin/ecs check src
 
       - name: Run Unit Tests
         run: php bin/phpunit --testsuite=unit --coverage-clover coverage/cov-unit.xml
