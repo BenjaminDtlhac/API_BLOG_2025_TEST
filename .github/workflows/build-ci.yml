@@ -44,4 +44,11 @@ jobs:
       - name: Run Functional Tests
         run: php bin/phpunit --testsuite=functional --coverage-clover coverage/cov-functional.xml
 
-      # TODO: Add step for upload to codecov
+      - name: Upload coverage report unit to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+            token: ${{ secrets.CODECOV_TOKEN }}
+            files: coverage/cov-unit.xml
+            flags: unit
+            name: codecov-umbrella
+
