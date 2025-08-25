@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "CCI LYON BLOG",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
